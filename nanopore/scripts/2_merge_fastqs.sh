@@ -1,16 +1,31 @@
 #!/bin/bash
 
-# download reference genome files
-# source: https://seekdeep.brown.edu/usages/genTargetInfoFromGenomes_usage.html
+# This script merges all fastq files in each barcode subdirectory into a single fastq file.
+# It should be executed while in the root directory of this project:
+
+# *****************************************************************
 
 # get working directory
+# --------------------------------------------------
 wd=$(pwd)
 
-# genome archive
-gz=http://seekdeep.brown.edu/data/plasmodiumData/pf.tar.gz
-# use wget to download http://seekdeep.brown.edu/data/plasmodiumData/pf.tar.gz to genomes directory
-wget -P $wd/genomes
+# source directory
+# --------------------------------------------------
+src_dir="$wd/input/fastq_barcodes"
 
-tar -zxvf pf.tar.gz
-wget http://seekdeep.brown.edu/data/SeekDeepTutorialData/ver2_6_0/CamThaiGhanaDRC_2011_2013_drugRes/ids.tab.txt
-SeekDeep genTargetInfoFromGenomes --gffDir pf/info/gff --genomeDir pf/genomes/ --primers ids.tab.txt --numThreads 7 --pairedEndLength 250 --dout extractedRefSeqs
+# destination directory
+# --------------------------------------------------
+dest_dir="$wd/input/fastq_barcodes_merged"
+
+# loop through each barcode subdirectory
+# --------------------------------------------------
+for barcode_dir in "$src_dir"/*; do
+	# check if it's a directory
+	if [ -d "$barcode_dir" ]; then
+		# get the name of the barcode (subdirectory name)
+		barcode=$(basename "$barcode_dir")
+
+		# concatenate all gzipped fastq files inside the barcode directory and save to the destination directory
+		zcat "$barcode_dir"/*.fastq.gz | gzip -c >"$dest_dir"/"$barcode".fastq.gz
+	fi
+done
