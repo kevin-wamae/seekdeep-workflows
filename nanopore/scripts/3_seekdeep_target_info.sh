@@ -3,9 +3,9 @@
 # This script is for generating target info from genomes using SeekDeep.
 # It should be run from the root of the project directory
 
-# ********************************************************
+# ========================================================
 #--- Start of slurm commands ---
-# ********************************************************
+# ========================================================
 
 #SBATCH -J SeekDeep
 #SBATCH --time=01:00:00
@@ -18,59 +18,51 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=wamaekevin@gmail.com
 
-# ********************************************************
-# load modules, if needed
-# ********************************************************
+# ========================================================
+# load modules, if needed, otherwise load conda environment with these tools
+# ========================================================
 # e.g.
-# module load gcc/10.2
-# module load samtools/1.16.1
-# module load bowtie2/2.4.2
+# module load gcc
+# module load samtools
+# module load bowtie2
 
-
-# ********************************************************
-# activate conda environment
-# ********************************************************
+# ========================================================
+# activate conda environment, if needed
+# ========================================================
 source "${HOME}/mambaforge/etc/profile.d/conda.sh"
 conda activate seekdeep
 
-
-# ********************************************************
+# ========================================================
 # working directories and files
-# ********************************************************
+# ========================================================
 
 # input directories and files
 # --------------------------------------------------------
-dirWrk=${PWD}
-dirData=$dirWrk/input/fastq_barcodes_merged
-
+wd=${PWD}
+dirData=$wd/input/fastq_barcodes_merged
 
 # resources (genome, gff, known mutations)
-resources=/nfs/jbailey5/baileyweb/colabs/kwamae/resources/seekdeep_ref_genomes/plasmodium_plasmodb_pacbio
-
+resources=$wd/input/genomes
 
 # primers
 # --------------------------------------------------------
-primers=$dirWrk/input/run_files/primers.txt
+primers=$wd/input/run_files/primers.txt
 
-
-# insert sizes
+# insert size
 # --------------------------------------------------------
 insert_size=300
 
-
 # output directories for targets
 # --------------------------------------------------------
-dirRefs=$dirWrk/target_info
-
+dirRefs=$wd/target_info
 
 # number of threads for pipeline and clustering
 # --------------------------------------------------------
-threads=10
+threads=2
 
-
-# ********************************************************
+# ========================================================
 # SeekDeep - get target info from genomes
-# ********************************************************
+# ========================================================
 SeekDeep genTargetInfoFromGenomes \
    --primers $primers \
    --pairedEndLength $insert_size \
