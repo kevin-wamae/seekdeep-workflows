@@ -11,6 +11,32 @@ This pipeline for analysing nanopore data consists of four main steps:
 - Generating target info (information) files for SeekDeep, and
 - Running the analysis pipeline using the merged fastq files and the target info files.
 
+---
+
+# Directory structure
+
+```
+.
+├── input
+│   ├── fastq_barcodes
+│   │   ├── barcode01
+│   │   └── barcode02
+│   ├── fastq_barcodes_merged
+│   ├── genomes
+│   ├── genome_target_info
+│   └── run_files
+│       ├── primers.txt
+│       └── sampleNames.txt
+├── output
+└── scripts
+    ├── 1_download_genomes.sh
+    ├── 2_merge_fastqs.sh
+    ├── 3_seekdeep_target_info.sh
+    └── 4_seekdeep_analysis.sh
+```
+
+---
+
 # Pipeline Steps
 
 This pipeline should be run from the `projects/seekdeep/nanopore` directory.
@@ -22,7 +48,7 @@ This pipeline should be run from the `projects/seekdeep/nanopore` directory.
 - To execute this step, run:
   - `bash scripts/1_download_genomes.sh`
 
-**Step 2: Merge Fastq Files**: Next, we merge multiple FastQ files from the different barcodes into a single FastQ file. This simplification step is crucial for streamlining the SeekDeep analysis.
+**Step 2: Merge Fastq Files**: Next, we merge multiple FastQ files from the different barcodes (`input/fastq_barcodes/barcode*/`) into single FastQ files (`input/fastq_barcodes_merged/barcode*/`). This simplification step is crucial for streamlining the SeekDeep analysis.
 
 - To perform this merging, run:
   - `bash scripts/2_merge_fastq.sh`
@@ -45,3 +71,9 @@ This pipeline should be run from the `projects/seekdeep/nanopore` directory.
 
 - Alternatively, you can submit the SeekDeep analysis as a job to a cluster using the following command:
   - `sbatch scripts/4_run_seekdeep.sh`
+
+---
+
+## **Feedback and Issues**
+
+Report any issues or bugs by openning an issue [here](https://github.com/kevin-wamae/seekdeep-analysis-workflows/issues) or contact me via email at **wamaekevin[at]gmail.com**
