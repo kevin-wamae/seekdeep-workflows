@@ -41,19 +41,25 @@ This pipeline for analysing nanopore data consists of four main steps:
 
 This pipeline should be run from the `projects/seekdeep/nanopore` directory.
 
-**Step 1: Download Preformatted Blast Databases**: The pipeline begins with either downloading or the generation of bowtie2 indexes corresponding to the genomes of interest. These indexes are essential for SeekDeep's functionality, as they facilitate the extraction of target sequences using the provided primers.
+## **Step 1: Download Preformatted Blast Databases**
+
+The pipeline begins with either downloading or the generation of bowtie2 indexes corresponding to the genomes of interest. These indexes are essential for SeekDeep's functionality, as they facilitate the extraction of target sequences using the provided primers.
 
 - The indexes used here contains genome sequences of _P. falciparum_.
 
 - To execute this step, run:
   - `bash scripts/1_download_genomes.sh`
 
-**Step 2: Merge Fastq Files**: Next, we merge multiple FastQ files from the different barcodes (`input/fastq_barcodes/barcode*/`) into single FastQ files (`input/fastq_barcodes_merged/barcode*/`). This simplification step is crucial for streamlining the SeekDeep analysis.
+## **Step 2: Merge Fastq Files**
+
+Next, we merge multiple FastQ files from the different barcodes (`input/fastq_barcodes/barcode*/`) into single FastQ files (`input/fastq_barcodes_merged/barcode*/`). This simplification step is crucial for streamlining the SeekDeep analysis.
 
 - To perform this merging, run:
   - `bash scripts/2_merge_fastq.sh`
 
-**Step 3: Generate Target Info Files**: The third step involves generating target info files for SeekDeep. It automatically generates several of the files used by the SeekDeep pipeline mostly in the extraction step. It is also useful for checking if primers match against several reference genomes.
+## **Step 3: Generate Target Info Files**
+
+The third step involves generating target info files for SeekDeep. It automatically generates several of the files used by the SeekDeep pipeline mostly in the extraction step. It is also useful for checking if primers match against several reference genomes.
 
 - For each target being analyzed, the primers used to amplify the target sequence are provided in a separate file (`input/run_files/primers.txt`).
 - Additional, for each sample being analyzed, the sample name file (`input/run_files/sampleNames.txt`) must contain the target(s) being analyzed, the sample name and the barcode matching the respective sample.
@@ -64,7 +70,9 @@ This pipeline should be run from the `projects/seekdeep/nanopore` directory.
 - Alternatively, you can submit the target info generation as a job to a cluster using the following command:
   - `sbatch scripts/3_generate_target_info.sh`
 
-**Step 4: Run SeekDeep Analysis**: The final step is to run the SeekDeep analysis pipeline using the merged FastQ files and the target info files. This step involves executing the SeekDeep analysis command with the appropriate parameters.
+## **Step 4: Run SeekDeep Analysis**
+
+The final step is to run the SeekDeep analysis pipeline using the merged FastQ files and the target info files. This step involves executing the SeekDeep analysis command with the appropriate parameters.
 
 - To run the SeekDeep analysis, execute:
   - `bash scripts/4_run_seekdeep.sh`
