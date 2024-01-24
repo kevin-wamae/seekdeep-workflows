@@ -27,7 +27,7 @@
 # module load bowtie2
 
 # ========================================================
-# activate conda environment, if needed
+# activate conda environment, if not using modules
 # ========================================================
 source "${HOME}/mambaforge/etc/profile.d/conda.sh"
 conda activate seekdeep
