@@ -54,7 +54,7 @@ insert_size=300
 
 # output directories for targets
 # --------------------------------------------------------
-dirRefs=$wd/target_info
+out_dir=$wd/input/genome_target_info
 
 # number of threads for pipeline and clustering
 # --------------------------------------------------------
@@ -69,7 +69,7 @@ SeekDeep genTargetInfoFromGenomes \
    --genomeDir $resources/genomes/ \
    --gffDir $resources/info/gff \
    --errors 2 \
-   --dout $dirRefs \
+   --dout $out_dir \
    --numThreads $threads \
    --shortNames \
    --overWriteDir
