@@ -6,3 +6,9 @@
 # ----------------------------
 **/job*
 **/job*
+
+# folders
+# ----------------------------
+resources/info
+resources/genomes
+pfalciparum.tar.gz
