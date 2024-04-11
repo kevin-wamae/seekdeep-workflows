@@ -7,7 +7,7 @@
 # ========================================================
 #SBATCH --job-name=seekdeep
 #SBATCH --partition=longrun
-#SBATCH --time=06:00:00
+#SBATCH --time=12:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=50G
@@ -21,8 +21,8 @@
 # --------------------------------------------------
 
 # Check if the script is being run from the correct directory
-if [[ ! $(pwd) =~ seekdeep-workflows/illumina_mids_no_replicates$ ]]; then
-	echo "Please run this script from this directory: seekdeep-workflows/illumina_mids_no_replicates/"
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-illumina_mids_no_replicates$ ]]; then
+	echo "Please run this script from this directory: seekdeep-workflows/wf-illumina_mids_no_replicates/"
 	exit 1
 fi
 
@@ -58,7 +58,7 @@ KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_11-03-seekdeep
+DIR_OUT=$WD/output/analysis/2024_04_11-04-seekdeep
 
 # number of threads to use
 THREADS=20

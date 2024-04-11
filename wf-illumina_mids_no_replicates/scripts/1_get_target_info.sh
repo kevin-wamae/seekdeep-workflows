@@ -21,8 +21,8 @@
 # --------------------------------------------------
 
 # Check if the script is being run from the correct directory
-if [[ ! $(pwd) =~ seekdeep-workflows/illumina_mids_no_replicates$ ]]; then
-  echo "Please run this script from this directory: seekdeep-workflows/illumina_mids_no_replicates/"
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-illumina_mids_no_replicates$ ]]; then
+  echo "Please run this script from this directory: seekdeep-workflows/wf-illumina_mids_no_replicates/"
   exit 1
 fi
 
