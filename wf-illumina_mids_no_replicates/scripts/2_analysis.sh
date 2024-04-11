@@ -77,9 +77,9 @@ elucidator setupTarAmpAnalysis \
 	--extraQlusterCmds="--useAllInput" \
 	--extraProcessClusterCmds="--allowHomopolymerCollapse \
                                --lowFreqHaplotypeFracCutOff 0.05 \
-                               --gffFnp $resourcesDir/info/gff/Pf3D7.gff \
-                               --genomeFnp $resourcesDir/fasta/Pf3D7.fasta \
-                               --knownAminoAcidChangesFnp $resourcesDir/info/pf_drug_resistant_aaPositions_updated.tsv" \
+							   --genomeFnp $REF_GENOME \
+                               --gffFnp $REF_GFF \
+                               --knownAminoAcidChangesFnp $KNOWN_MUTATIONS" \
 	--numThreads $THREADS
 
 # run the analysis
