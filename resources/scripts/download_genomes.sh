@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# download reference genome files
+# download p. falciparu reference genome files
 # NB: ensure to run it while in the seekdeep-workflows/resources directory
-
+# --------------------------------------------------
 # Check if the script is being run from the correct directory
 if [[ ! $(pwd) =~ seekdeep-workflows/resources$ ]]; then
 	echo "Please run this script from this directory: seekdeep-workflows/resources/"
