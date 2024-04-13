@@ -11,8 +11,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=10G
-#SBATCH --output=job.%j.out
-#SBATCH --error=job.%j.err
+#SBATCH --output=log/job.%j.out
+#SBATCH --error=log/job.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=kkariuki@kemri-wellcome.org
 # ========================================================
@@ -21,8 +21,8 @@
 # --------------------------------------------------
 
 # Check if the script is being run from the correct directory
-if [[ ! $(pwd) =~ seekdeep-workflows/wf-illumina_mids_no_replicates$ ]]; then
-  echo "Please run this script from this directory: seekdeep-workflows/wf-illumina_mids_no_replicates/"
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-illumina_mids$ ]]; then
+  echo "Please run this script from this directory: seekdeep-workflows/wf-illumina_mids/"
   exit 1
 fi
 
@@ -43,14 +43,14 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_ilri_illumina_2x300
+WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2023_05_25_ilri_illumina_2x300
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/
-DIR_OUT=$WD/output/reference_targets
+DIR_OUT=$WD/output/reference_targets_dhfr
 
 # primers
-PRIMERS=$WD/input/run_files/primers.txt
+PRIMERS=$WD/input/run_files/primers_dhfr.txt
 
 # resources directory
 REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes

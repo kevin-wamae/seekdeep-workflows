@@ -7,12 +7,12 @@
 # ========================================================
 #SBATCH --job-name=seekdeep
 #SBATCH --partition=longrun
-#SBATCH --time=12:00:00
+#SBATCH --time=06:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --mem=50G
-#SBATCH --output=job.%j.out
-#SBATCH --error=job.%j.err
+#SBATCH --mem=20G
+#SBATCH --output=log/job.%j.out
+#SBATCH --error=log/job.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=kkariuki@kemri-wellcome.org
 # ========================================================
@@ -21,8 +21,8 @@
 # --------------------------------------------------
 
 # Check if the script is being run from the correct directory
-if [[ ! $(pwd) =~ seekdeep-workflows/wf-illumina_mids_no_replicates$ ]]; then
-	echo "Please run this script from this directory: seekdeep-workflows/wf-illumina_mids_no_replicates/"
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-illumina_mids$ ]]; then
+	echo "Please run this script from this directory: seekdeep-workflows/wf-illumina_mids/"
 	exit 1
 fi
 
@@ -37,19 +37,19 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_ilri_illumina_2x300
+WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2023_05_26_ilri_illumina_2x300_fail
 
 # data directory
 DATA_DIR=$WD/input/fastq
 
 # sample names
-SAMPLE_NAMES=$WD/input/run_files/sampleNames.txt
+SAMPLE_NAMES=$WD/input/run_files/sampleNames_dhps.txt
 
 # primers
-PRIMERS=$WD/input/run_files/primers.txt
+PRIMERS=$WD/input/run_files/primers_dhps.txt
 
 # target info
-GENOME_TARGET_INFO=$WD/output/reference_targets/forSeekDeep
+GENOME_TARGET_INFO=$WD/output/reference_targets_dhps/forSeekDeep
 
 # resources (genome, gff, known mutations)
 REF_GENOME=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes/Pf3D7.fasta
@@ -58,7 +58,7 @@ KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_11-04-seekdeep
+DIR_OUT=$WD/output/analysis/2024_04_12-01-seekdeep-dhps
 
 # number of threads to use
 THREADS=20
