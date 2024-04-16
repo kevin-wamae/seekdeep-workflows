@@ -1,0 +1,7 @@
+*
+!.gitignore
+!barcode01.fastq.gz
+!barcode02.fastq.gz
+!barcode03.fastq.gz
+!barcode04.fastq.gz
+!barcode05.fastq.gz
