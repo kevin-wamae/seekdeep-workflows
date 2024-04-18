@@ -6,7 +6,7 @@
 # ========================================================
 #--- slurm commands ---
 
-#SBATCH --job-name mergeFqs
+#SBATCH --job-name demux
 #SBATCH --partition=longrun
 #SBATCH --time=12:00:00
 #SBATCH --ntasks=1
@@ -24,13 +24,14 @@
 # working directories, files and variables
 # ========================================================
 # WD=$(PWD)
-WD =/data/isabella_group/data/2024_01_22_turkana_tads_nanopore
+WD=/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1/input
 
 # source directory
 DIR_IN="$WD/fastq_barcodes"
 
 # destination directory
 DIR_OUT="$WD/fastq_barcodes_merged"
+mkdir -p "$DIR_OUT"
 
 # loop through each barcode subdirectory and merge all fastq files
 # ========================================================
