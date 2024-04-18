@@ -5,7 +5,7 @@
 
 # slurm directives
 # ========================================================
-#SBATCH --job-name=tads
+#SBATCH --job-name=getTargets
 #SBATCH --partition=longrun
 #SBATCH --time=00:30:00
 #SBATCH --ntasks=1
@@ -20,8 +20,8 @@
 # NB: run this script while in the seekdeep-workflows/nanopore directory
 # --------------------------------------------------
 # Check if the script is being run from the correct directory
-if [[ ! $(pwd) =~ seekdeep-workflows/nanopore-without-mids$ ]]; then
-   echo "Please run this script from this directory: seekdeep-workflows/nanopore-without-mids/"
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-seekdeep-nanopore-no-mids$ ]]; then
+   echo "Please run this script from this directory: seekdeep-workflows/wf-seekdeep-nanopore-no-mids/"
    exit 1
 fi
 
@@ -40,7 +40,7 @@ conda activate seekdeep
 # working directories, files and variables
 # ========================================================
 # working directory
-WD=/data/isabella_group/data/turkana_embatalk/2024_01_22_nanopore_r10.4.1
+WD=/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1
 
 # resources (genome, gff, known mutations)
 DIR_RESOURCES=../resources
@@ -52,7 +52,8 @@ PRIMERS=$WD/input/run_files/primers.txt
 INSERT_SIZE=400
 
 # output directories for targets
-DIR_OUT=$WD/output/reference_targets_mdr1
+DIR_OUT=$WD/output/reference_targets
+mkdir -p $DIR_OUT
 
 # number of threads to use
 THREADS=8
