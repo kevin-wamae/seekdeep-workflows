@@ -5,7 +5,7 @@
 
 # slurm directives
 # ========================================================
-#SBATCH --job-name=tads
+#SBATCH --job-name=seekdeep
 #SBATCH --partition=longrun
 #SBATCH --time=06:00:00
 #SBATCH --ntasks=1
@@ -20,8 +20,8 @@
 # NB: run this script while in the seekdeep-workflows/nanopore directory
 # --------------------------------------------------
 # Check if the script is being run from the correct directory
-if [[ ! $(pwd) =~ seekdeep-workflows/nanopore-without-mids$ ]]; then
-	echo "Please run this script from this directory: seekdeep-workflows/nanopore-without-mids/"
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-seekdeep-nanopore-no-mids$ ]]; then
+	echo "Please run this script from this directory: seekdeep-workflows/wf-seekdeep-nanopore-no-mids/"
 	exit 1
 fi
 
@@ -40,7 +40,7 @@ conda activate seekdeep
 # working directories, files and variables
 # ========================================================
 # working directory
-WD=/data/isabella_group/data/turkana_embatalk/2024_01_22_nanopore_r10.4.1
+WD=/data/isabella_group/data/turkana_embatalk/2024_03_11_illumina_nanopore_r10.4.1
 
 # data directory
 DATA_DIR=$WD/input/fastq_barcodes_merged
@@ -52,7 +52,7 @@ SAMPLE_NAMES=$WD/input/run_files/sampleNames.txt
 PRIMERS=$WD/input/run_files/primers.txt
 
 # target info
-GENOME_TARGET_INFO=$WD/output/reference_targets_mdr1
+GENOME_TARGET_INFO=$WD/output/reference_targets
 
 # resources (genome, gff, known mutations)
 REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes/Pf3D7.fasta
@@ -61,7 +61,7 @@ KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_08-01-seekdeep
+DIR_OUT=$WD/output/analysis/2024_04_18-01-seekdeep
 
 # number of threads to use for pipeline and clustering
 THREADS_PIPELINE=20
@@ -69,7 +69,7 @@ THREADS_CLUSTERING=10
 
 # analysis - setup tar amp analysis to generate wrapper scripts
 # ========================================================
-SeekDeep setupTarAmpAnalysis \
+elucidator setupTarAmpAnalysis \
 	--samples $SAMPLE_NAMES \
 	--outDir $DIR_OUT \
 	--technology nanopore \
@@ -80,6 +80,7 @@ SeekDeep setupTarAmpAnalysis \
 	--extraExtractorCmds="--minLenCutOff 100 \
 						  --qualCheckLevel 11" \
 	--extraKlusterCmds="--readLengthMinDiff 100 \
+						--maxReadAmountForDownsample 1000000 \
 						--numThreads $THREADS_CLUSTERING" \
 	--extraProcessClusterCmds="--sampleMinTotalReadCutOff 250 \
 							   --replicateMinTotalReadCutOff 250 \
