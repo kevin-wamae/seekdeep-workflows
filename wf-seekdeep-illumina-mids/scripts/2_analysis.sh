@@ -65,6 +65,7 @@ THREADS=20
 
 # analysis - setup tar amp analysis to generate wrapper scripts
 # ========================================================
+
 elucidator setupTarAmpAnalysis \
 	--samples $SAMPLE_NAMES \
 	--outDir $DIR_OUT \
