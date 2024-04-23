@@ -37,7 +37,7 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD="."
+WD="/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_kwtrp_illumina_2x300"
 
 # data directory
 DATA_DIR=$WD/input/fastq
@@ -52,13 +52,13 @@ PRIMERS=$WD/input/run_files/primers.txt
 GENOME_TARGET_INFO=$WD/output/reference_targets/forSeekDeep
 
 # resources (genome, gff, known mutations)
-REF_GENOME=../resources/genomes/Pf3D7.fasta
-REF_GFF=../resources/info/gff/Pf3D7.gff
-KNOWN_MUTATIONS=../resources/info/pf_drug_resistant_aaPositions_k13_updated.tsv
+REF_GENOME=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes/Pf3D7.fasta
+REF_GFF=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff/Pf3D7.gff
+KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/pf_drug_resistant_aaPositions_k13_updated.tsv
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_22-01-seekdeep
+DIR_OUT=$WD/output/analysis/2024_04_23-01-seekdeep
 
 # number of threads to use
 THREADS=20

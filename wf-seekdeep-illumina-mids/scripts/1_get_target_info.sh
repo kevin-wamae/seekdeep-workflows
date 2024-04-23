@@ -44,7 +44,7 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD="."
+WD="/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_kwtrp_illumina_2x300"
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/
@@ -54,8 +54,8 @@ DIR_OUT=$WD/output/reference_targets
 PRIMERS=$WD/input/run_files/primers.txt
 
 # resources directory
-REF_GENOMES=../resources/genomes
-REF_GFFS=../resources/info/gff
+REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes
+REF_GFFS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff
 
 # threads to use
 THREADS=10
