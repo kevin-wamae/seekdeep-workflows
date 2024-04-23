@@ -1,10 +1,12 @@
 #!/bin/bash
 #*********************************************************
 
-# This script will generate target info from reference genomes
+# This script will generate target info from reference genomes and provide
+# input for SeekDeep analysis
 
 # slurm directives
 # ========================================================
+
 #SBATCH --job-name=seekdeep
 #SBATCH --partition=longrun
 #SBATCH --time=00:30:00
@@ -17,10 +19,8 @@
 #SBATCH --mail-user=kkariuki@kemri-wellcome.org
 # ========================================================
 
-# NB: run this script while in the seekdeep-workflows/nanopore directory
+# NB: # Check if the script is being run from the correct directory (seekdeep-workflows/wf-seekdeep-illumina-mids)
 # --------------------------------------------------
-
-# Check if the script is being run from the correct directory
 if [[ ! $(pwd) =~ seekdeep-workflows/wf-seekdeep-illumina-mids$ ]]; then
   echo "Please run this script from this directory: seekdeep-workflows/wf-seekdeep-illumina-mids/"
   exit 1
@@ -35,6 +35,7 @@ conda activate seekdeep
 
 # or load required modules if not using conda
 # --------------------------------------------------------
+
 # module load bowtie2
 # module load samtools
 # module load gcc/12.3.1
@@ -43,7 +44,7 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_04_16_kwtrp_illumina_2x300
+WD="."
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/
@@ -53,16 +54,15 @@ DIR_OUT=$WD/output/reference_targets
 PRIMERS=$WD/input/run_files/primers.txt
 
 # resources directory
-REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes
-REF_GFFS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff
+REF_GENOMES=../resources/genomes
+REF_GFFS=../resources/info/gff
 
 # threads to use
 THREADS=10
 
-# seekdeep script
-# --------------------------------------------------------
+# get target info from genomes using elucidator or seekdeep
+# ========================================================
 
-# k13
 elucidator genTargetInfoFromGenomes \
   --genomeDir $REF_GENOMES/ \
   --gffDir $REF_GFFS/ \
@@ -74,10 +74,12 @@ elucidator genTargetInfoFromGenomes \
 
 # deactivate conda environment
 # ========================================================
+
 conda deactivate
 
 # or unload modules if not using conda
 # ========================================================
+
 # module unload bowtie2
 # module unload samtools
 # module unload gcc/12.3.1
