@@ -40,10 +40,10 @@ conda activate seekdeep
 # working directories, files and variables
 # ========================================================
 # working directory
-WD=/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1
+WD=/data/isabella_group/data/multidrug_resistance_lab_kisumu/2024_04_19_nanopore_r10.4.1
 
 # resources (genome, gff, known mutations)
-DIR_RESOURCES=../resources
+DIR_RESOURCES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources
 
 # primers
 PRIMERS=$WD/input/run_files/primers.txt

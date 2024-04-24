@@ -40,7 +40,7 @@ conda activate seekdeep
 # working directories, files and variables
 # ========================================================
 # working directory
-WD=/data/isabella_group/data/turkana_embatalk/2024_03_11_illumina_nanopore_r10.4.1
+WD=/data/isabella_group/data/multidrug_resistance_lab_kisumu/2024_04_19_nanopore_r10.4.1
 
 # data directory
 DATA_DIR=$WD/input/fastq_barcodes_merged
@@ -61,7 +61,7 @@ KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_18-01-seekdeep
+DIR_OUT=$WD/output/analysis/2024_04_23-01-seekdeep
 
 # number of threads to use for pipeline and clustering
 THREADS_PIPELINE=20

@@ -7,10 +7,10 @@
 # ========================================================
 #SBATCH --job-name=seekdeep
 #SBATCH --partition=longrun
-#SBATCH --time=06:00:00
+#SBATCH --time=07:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
-#SBATCH --mem=20G
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=50G
 #SBATCH --output=log/job.%j.out
 #SBATCH --error=log/job.%j.err
 #SBATCH --mail-type=ALL
@@ -37,7 +37,7 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD="/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_kwtrp_illumina_2x300"
+WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_ilri_illumina_2x300
 
 # data directory
 DATA_DIR=$WD/input/fastq
@@ -58,10 +58,10 @@ KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_23-01-seekdeep
+DIR_OUT=$WD/output/analysis/2024_04_24-01-seekdeep
 
 # number of threads to use
-THREADS=20
+THREADS=30
 
 # analysis - setup tar amp analysis to generate wrapper scripts
 # ========================================================
@@ -90,7 +90,7 @@ elucidator setupTarAmpAnalysis \
 cd $DIR_OUT
 
 # run analysis
-./runAnalysis.sh 20
+./runAnalysis.sh 30
 
 # deactivate conda environment
 # ========================================================

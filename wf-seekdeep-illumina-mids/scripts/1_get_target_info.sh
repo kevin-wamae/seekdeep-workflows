@@ -44,7 +44,7 @@ conda activate seekdeep
 # ========================================================
 
 # working directory
-WD="/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_kwtrp_illumina_2x300"
+WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_ilri_illumina_2x300
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/
