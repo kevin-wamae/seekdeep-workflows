@@ -1,0 +1,7 @@
+#target	sample	barcode_id	rep
+AMA1	SAMPLE1	barcode01	MID02
+AMA1	SAMPLE2	barcode01	MID03
+DHPS	SAMPLE1	barcode01	MID02
+DHFR	SAMPLE1	barcode01	MID02
+MDR1	SAMPLE1	barcode01	MID02
+K13	SAMPLE2	barcode02	MID02
