@@ -59,9 +59,13 @@ mids = read_mids("input/run_files/mids.tsv")
 primers = read_primers("input/run_files/primers.tsv")
 
 # Directory containing barcode FASTQ files
-input_dir = "/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1/input/fastq_barcodes_merged"
+input_dir = (
+    "/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1/input/input"
+)
 # Directory to save demultiplexed FASTQ files
-output_dir = "/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1/input/fastq_demultiplexed"
+output_dir = (
+    "/data/isabella_group/data/turkana_embatalk/2024_04_12_nanopore_r10.4.1/input/output"
+)
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
