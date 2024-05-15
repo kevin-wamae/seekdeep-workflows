@@ -10,7 +10,7 @@
 
 # slurm directives
 # ========================================================
-#SBATCH --job-name=seekdeep
+#SBATCH --job-name=rename_fq
 #SBATCH --partition=longrun
 #SBATCH --time=03:00:00
 #SBATCH --ntasks=1
@@ -41,19 +41,19 @@ mkdir -p 2_renamed_fastq
 
 # location of the tsv file
 # ----------------------------------------------------
-TSV=../input/run_files/rename-fastq.tsv
+TSV=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_04_16_kwtrp_illumina_2x300/output/analysis/2024_05_15_demux_mids/rename-fastq.tsv
 
 # Read the tsv file and rename/move the files
 # ----------------------------------------------------
 awk -F'\t' 'NR>1 {print $1, $3, $2, $4}' $TSV | while read -r fq1 newname1 fq2 newname2; do
     if [[ -f "$fq1" ]]; then
-        cp "$fq1" "$newname1"
+        cp "$fq1" "2_renamed_fastq/$(basename $newname1)"
     else
         echo "File not found: $fq1"
     fi
 
     if [[ -f "$fq2" ]]; then
-        cp "$fq2" "$newname2"
+        cp "$fq2" "2_renamed_fastq/$(basename $newname2)"
     else
         echo "File not found: $fq2"
     fi
