@@ -6,7 +6,7 @@
 
 # slurm directives
 # ========================================================
-#SBATCH --job-name=seekdeep
+#SBATCH --job-name=demux_MIDs
 #SBATCH --partition=longrun
 #SBATCH --time=03:00:00
 #SBATCH --ntasks=1
@@ -29,7 +29,7 @@ fi
 
 # directory containing the input fastq files
 # ----------------------------------------------------
-INDIR=input/fastq
+INDIR=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_04_16_kwtrp_illumina_2x300/input/fastq
 
 # directory where the output directories will be created
 # ----------------------------------------------------
@@ -38,7 +38,7 @@ mkdir -p $OUTDIR
 
 # location of the MIDs file
 # ----------------------------------------------------
-MIDS=input/run_files/mids.txt
+MIDS=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_04_16_kwtrp_illumina_2x300/input/run_files/primers.txt
 
 # extract the fastq files by MIDs
 for r1_file in ${INDIR}/*_R1.fastq.gz; do
