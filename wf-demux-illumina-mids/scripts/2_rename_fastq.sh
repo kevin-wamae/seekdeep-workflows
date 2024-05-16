@@ -41,7 +41,7 @@ mkdir -p 2_renamed_fastq
 
 # location of the tsv file
 # ----------------------------------------------------
-TSV=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_04_16_kwtrp_illumina_2x300/output/analysis/2024_05_15_demux_mids/rename-fastq.tsv
+TSV=../input/run_files/rename-fastq.tsv
 
 # Read the tsv file and rename/move the files
 # ----------------------------------------------------

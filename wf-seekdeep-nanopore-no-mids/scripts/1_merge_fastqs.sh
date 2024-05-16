@@ -21,10 +21,10 @@
 # #--- End of slurm commands ---
 # ========================================================
 
-# working directories, files and variables
+# working directories (without forward slashes), files and variables
 # ========================================================
 # WD=$(PWD)
-WD=/data/isabella_group/data/multidrug_resistance_lab_kisumu/2024_04_19_nanopore_r10.4.1/
+WD=/data/isabella_group/data/chmi/ama1_validation/
 
 # source directory
 DIR_IN="$WD/input/fastq_barcodes"

@@ -42,8 +42,9 @@ conda activate seekdeep
 # working directory
 WD=/data/isabella_group/data/multidrug_resistance_lab_kisumu/2024_04_19_nanopore_r10.4.1
 
-# resources (genome, gff, known mutations)
-DIR_RESOURCES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources
+# resources directory, these must be absolute paths
+REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes
+REF_GFFS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff
 
 # primers
 PRIMERS=$WD/input/run_files/primers.txt
@@ -63,8 +64,8 @@ THREADS=8
 elucidator genTargetInfoFromGenomes \
    --primers $PRIMERS \
    --pairedEndLength $INSERT_SIZE \
-   --gffDir $DIR_RESOURCES/info/gff/ \
-   --genomeDir $DIR_RESOURCES/genomes/ \
+   --genomeDir $REF_GENOMES \
+   --gffDir $REF_GFFS \
    --errors 0 \
    --dout $DIR_OUT \
    --numThreads $THREADS \

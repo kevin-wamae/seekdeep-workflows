@@ -33,11 +33,11 @@ fi
 source "${HOME}/miniforge3/etc/profile.d/conda.sh"
 conda activate seekdeep
 
-# working directories, files and variables
+# working directories (without forward slashes), files and variables
 # ========================================================
 
 # working directory
-WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_ilri_illumina_2x300
+WD=/data/isabella_group/data/turkana_embatalk/2024_02_23_illumina_2x300_fail
 
 # data directory
 DATA_DIR=$WD/input/fastq
@@ -51,17 +51,17 @@ PRIMERS=$WD/input/run_files/primers.txt
 # target info
 GENOME_TARGET_INFO=$WD/output/reference_targets/forSeekDeep
 
-# resources (genome, gff, known mutations)
+# resources (genome, gff, known mutations), these must be absolute paths
 REF_GENOME=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes/Pf3D7.fasta
 REF_GFF=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff/Pf3D7.gff
 KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/pf_drug_resistant_aaPositions_k13_updated.tsv
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_04_24-01-seekdeep
+DIR_OUT=$WD/output/analysis/2024_05_06-03-seekdeep
 
 # number of threads to use
-THREADS=30
+THREADS=24
 
 # analysis - setup tar amp analysis to generate wrapper scripts
 # ========================================================
@@ -90,7 +90,7 @@ elucidator setupTarAmpAnalysis \
 cd $DIR_OUT
 
 # run analysis
-./runAnalysis.sh 30
+./runAnalysis.sh 24
 
 # deactivate conda environment
 # ========================================================

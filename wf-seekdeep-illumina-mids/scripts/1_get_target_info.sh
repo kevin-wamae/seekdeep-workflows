@@ -40,11 +40,11 @@ conda activate seekdeep
 # module load samtools
 # module load gcc/12.3.1
 
-# working directories, files and variables
+# working directories (without forward slashes), files and variables
 # ========================================================
 
 # working directory
-WD=/data/isabella_group/data/ssurvey_2022/western_kenya/2024_02_23_ilri_illumina_2x300
+WD="."
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/
@@ -53,7 +53,7 @@ DIR_OUT=$WD/output/reference_targets
 # primers
 PRIMERS=$WD/input/run_files/primers.txt
 
-# resources directory
+# resources directory, these must be absolute paths
 REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes
 REF_GFFS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff
 

@@ -54,7 +54,7 @@ PRIMERS=$WD/input/run_files/primers.txt
 # target info
 GENOME_TARGET_INFO=$WD/output/reference_targets
 
-# resources (genome, gff, known mutations)
+# resources (genome, gff, known mutations), these must be absolute paths
 REF_GENOMES=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/genomes/Pf3D7.fasta
 REF_GFFS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/gff/Pf3D7.gff
 KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/pf_drug_resistant_aaPositions_k13_updated.tsv
