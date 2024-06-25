@@ -6,15 +6,15 @@
 # slurm directives
 # ========================================================
 #SBATCH --job-name=seekdeep
-#SBATCH --partition=longrun
-#SBATCH --time=07:00:00
+#SBATCH --partition=highmem
+#SBATCH --time=01:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=24
+#SBATCH --cpus-per-task=10
 #SBATCH --mem=50G
-#SBATCH --output=log/job.%j.out
-#SBATCH --error=log/job.%j.err
+#SBATCH --output=job.%j.out
+#SBATCH --error=job.%j.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=kkariuki@kemri-wellcome.org
+#SBATCH --mail-user=<email>
 # ========================================================
 
 # NB: run this script while in the seekdeep-workflows/nanopore directory
@@ -58,10 +58,10 @@ KNOWN_MUTATIONS=/home/KWTRP/kkariuki/software/seekdeep-workflows/resources/info/
 
 # output directory, rename to user's preference
 mkdir -p $WD/output/analysis
-DIR_OUT=$WD/output/analysis/2024_05_06-03-seekdeep
+DIR_OUT=$WD/output/analysis/1900_01_01-01-seekdeep
 
 # number of threads to use
-THREADS=24
+THREADS=10
 
 # analysis - setup tar amp analysis to generate wrapper scripts
 # ========================================================
@@ -90,7 +90,7 @@ elucidator setupTarAmpAnalysis \
 cd $DIR_OUT
 
 # run analysis
-./runAnalysis.sh 24
+./runAnalysis.sh 10
 
 # deactivate conda environment
 # ========================================================
