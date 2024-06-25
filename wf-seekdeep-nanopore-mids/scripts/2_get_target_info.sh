@@ -17,7 +17,7 @@
 #SBATCH --mail-user=kkariuki@kemri-wellcome.org
 # ========================================================
 
-# NB: run this script while in the seekdeep-workflows/nanopore directory
+# NB: run this script while in the seekdeep-workflows/wf-seekdeep-nanopore-mid directory
 # --------------------------------------------------
 
 # Check if the script is being run from the correct directory
@@ -34,7 +34,7 @@ conda activate seekdeep
 
 # working directories, files and variables
 # ========================================================
-WD=/data/isabella_group/data/chmi/ama1_validation/
+WD=$(pwd)
 
 # resources (genome, gff, known mutations)
 DIR_RESOURCES=../resources
