@@ -13,18 +13,26 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=4G
-#SBATCH --output=log/job.%j.out
-#SBATCH --error=log/job.%j.err
+#SBATCH --output=job.%j.out
+#SBATCH --error=job.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=kkariuki@kemri-wellcome.org
 
 # #--- End of slurm commands ---
 # ========================================================
 
+# NB: run this script while in the seekdeep-workflows/wf-seekdeep-nanopore-mid directory
+# --------------------------------------------------
+
+# Check if the script is being run from the correct directory
+if [[ ! $(pwd) =~ seekdeep-workflows/wf-seekdeep-nanopore-mids$ ]]; then
+	echo "Please run this script from this directory: seekdeep-workflows/wf-seekdeep-nanopore-mids/"
+	exit 1
+fi
+
 # working directories, files and variables
 # ========================================================
-# WD=$(PWD)
-WD=/data/isabella_group/data/chmi/ama1_validation
+WD=$(pwd)
 
 # source directory
 DIR_IN="$WD/input/fastq_barcodes"
